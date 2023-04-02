@@ -1,6 +1,6 @@
 # portal-eCommerce2
 
-## Atenção 
+## Atenção! 
 **Caro corretor**: Esse projeto foi feito exclusivamente no arquivo `index.html` sem possuir qualquer arquivo 
 dedicado de `Css` ou `JavaScript`. Todas as classes implementadas foram feitas diretamente no index por meio 
 da sintax do `Bootstrap` ou da propriedade style do html. Todas as imagens (png, jpeg e svg) encontram-se na 
