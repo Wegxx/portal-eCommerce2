@@ -1,5 +1,3 @@
-# portal-eCommerce2
-
 ## Atenção! 
 **Caro corretor**: Esse projeto foi feito tendo como arquivo princiapl o `index.html` sem possuir qualquer arquivo 
 dedicado de `Css`. Todas as classes implementadas foram feitas diretamente nos respectivos html`s por meio 
