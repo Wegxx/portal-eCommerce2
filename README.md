@@ -2,7 +2,7 @@
 
 ## Atenção! 
 **Caro corretor**: Esse projeto foi feito tendo como arquivo princiapl o `index.html` sem possuir qualquer arquivo 
-dedicado de `Css`. Todas as classes implementadas foram feitas diretamente nos respectivos html`s por meio 
+dedicado de `Css`. Todas as classes implementadas foram feitas diretamente nos respectivos htmls por meio 
 da sintax do `Bootstrap` ou da propriedade style. Todas as imagens (png, jpeg e svg) encontram-se na 
 pasta `resources`. A pasta `components` nada mais é do que a componentização/separação do html para melhor organização 
 do projeto. Os arquivos na raiz do projeto (`index.html`, `index.js`, `product.html``product.js`) são as paginas princiapais 
