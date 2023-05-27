@@ -1,4 +1,4 @@
-function fetchProducts() {
+const fetchProducts = () => {
     fetch("https://fakestoreapi.com/products")
       .then(response => response.json())
       .then(data => {
@@ -39,7 +39,7 @@ const mostReviewedItems = async () => {
 
 mostReviewedItems()
 
-function handleRatingStars(rating) {
+const handleRatingStars = (rating) => {
   const starFill = '<img src="resources/starFill.svg" alt="StarFill">'
   const starHalf = '<img src="resources/starHalf.svg" alt="StarHalf">'
   const starEmpty = '<img src="resources/star.svg" alt="StarEmpty">'
@@ -66,8 +66,8 @@ function handleRatingStars(rating) {
   return starsHTML
 }
 
-// Função para exibir os produtos na página
-function showProducts(products) {
+// Função para exibir os produtos na página dentro da div product-list
+const showProducts = (products) => {
   var productsList = document.getElementById("product-list")
   productsList.innerHTML = "" // Limpa a lista de produtos antes de exibir os resultados
 
@@ -96,7 +96,7 @@ function showProducts(products) {
 
 // Pesquisa de produtos 
 
-function pesquisarProdutos() {
+const pesquisarProdutos = () => {
   var termo = document.getElementById("searchBar").value.toLowerCase();
 
   fetch("https://fakestoreapi.com/products")
@@ -115,7 +115,7 @@ function pesquisarProdutos() {
 
 // Filtragem de produtos 
 
-function getAllCategories() {
+const getAllCategories = () => {
   fetch("https://fakestoreapi.com/products/categories")
     .then(response => response.json())
     .then(json => console.log(json))
@@ -123,11 +123,32 @@ function getAllCategories() {
 
 getAllCategories()
 
-function filterCategories(){
+const filterCategories = () => {
   var categoryOne = document.getElementById("category-1").value
+  var priceFrom = document.getElementById("from-imput").value === "" ? 0 : document.getElementById("from-imput").value
+  var priceTo = document.getElementById("to-imput").value === "" ? 10000 : document.getElementById("to-imput").value
+
+  console.log("precos", priceFrom, priceTo)
+
   if(categoryOne !== "-Select Category 1-"){
     fetch(`https://fakestoreapi.com/products/category/${categoryOne}`)
     .then(res=>res.json())
-    .then(data=>showProducts(data))
+    .then(products => filterByPrice(products, priceFrom, priceTo)).catch(error => {
+      console.error("Ocorreu um erro ao obter a lista de produtos:", error);
+    });
+  } else {
+    fetch(`https://fakestoreapi.com/products`)
+    .then(res=>res.json())
+    .then(products => filterByPrice(products, priceFrom, priceTo)).catch(error => {
+      console.error("Ocorreu um erro ao obter a lista de produtos:", error);
+    });
   }
+}
+
+const filterByPrice  = (products, priceFrom, priceTo) => {
+  var filteredProducts = products.filter((product) => {
+  return product.price >= priceFrom && product.price <= priceTo;
+  })
+    console.log("filtrando pro preço", filteredProducts)
+    showProducts(filteredProducts)
 }

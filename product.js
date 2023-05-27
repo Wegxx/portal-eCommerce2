@@ -73,3 +73,17 @@ function fetchProduct() {
   
     return starsHTML
   }
+
+  const handleNavbar = async () => {
+    const html = await fetch("components/navbar.html").then((data) => data.text());
+    document.getElementById("navbar").innerHTML = html
+  }
+  
+  handleNavbar()
+
+  const handleFooter = async () => {
+    const html = await fetch("components/footer.html").then((data) => data.text());
+    document.getElementById("footer").innerHTML = html
+  }
+  
+  handleFooter()
