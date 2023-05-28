@@ -24,6 +24,7 @@ function fetchProduct() {
                                 ${handleRatingStars(data.rating.rate)}
                                 <div class="m-2">(${data.rating.count})</div>
                             </div>
+                            <p class="card-text"><b>Category:</b> ${data.category}</p>
                             <h5 style="color: #2d3377" class="card-text">R$ ${data.price}</h5>
                             <div class="rating m-2">
                                 ${data.description}

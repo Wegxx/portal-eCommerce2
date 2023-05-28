@@ -84,6 +84,7 @@ const showProducts = (products) => {
                         ${handleRatingStars(item.rating.rate)}
                         <div class="m-2">(${item.rating.count})</div>
                       </div>
+                      <p class="card-text"><b>Category:</b> ${item.category}</p>
                       <h5 style="color: #2d3377" class="card-text">R$ ${item.price}</h5>
                       <p class="card-text">${item.description}</p>
                       <a href="/product.html?${item.id}" class="btn btn-primary">See More</a>
@@ -114,14 +115,6 @@ const pesquisarProdutos = () => {
 }
 
 // Filtragem de produtos 
-
-const getAllCategories = () => {
-  fetch("https://fakestoreapi.com/products/categories")
-    .then(response => response.json())
-    .then(json => console.log(json))
-}
-
-getAllCategories()
 
 const filterCategories = () => {
   var categoryOne = document.getElementById("category-1").value
