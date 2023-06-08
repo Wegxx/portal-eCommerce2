@@ -39,6 +39,44 @@ const mostReviewedItems = async () => {
 
 mostReviewedItems()
 
+const fetchReviedProducts = () => {
+  fetch("https://fakestoreapi.com/products")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        var mostReviewedList = document.getElementById("reviewed-products")
+        let html = ''
+        const produtcs = data.sort(function(a, b) {
+          return b.rating.count - a.rating.count;
+        }).slice(0, 4)
+        produtcs.forEach((item) => {
+          html += `
+          <div class="col mb-3">
+            <div class="card">
+                <img style="background-color: #f2f2f2; padding: 1rem" height="238px" src="${item.image}" class="card-img-top" alt="Product Card">
+                <div class="card-body">
+                  <h5 class="card-title">${item.title}</h5>
+                  <div class="mb-2 d-flex flex-row">
+                    ${handleRatingStars(item.rating.rate)}
+                    <div class="m-2">(${item.rating.count})</div>
+                  </div>
+                  <p class="card-text"><b>Category:</b> ${item.category}</p>
+                  <h5 style="color: #2d3377" class="card-text">R$ ${item.price}</h5>
+                  <p class="card-text">${item.description}</p>
+                  <a href="/product.html?${item.id}" class="btn btn-primary">See More</a>
+                </div>
+            </div>
+        </div> `
+        })
+        mostReviewedList.innerHTML += html 
+      })
+      .catch(error => {
+        console.error('Ocorreu um erro:', error);
+      });
+}
+
+fetchReviedProducts()
+
 const handleRatingStars = (rating) => {
   const starFill = '<img src="resources/starFill.svg" alt="StarFill">'
   const starHalf = '<img src="resources/starHalf.svg" alt="StarHalf">'
