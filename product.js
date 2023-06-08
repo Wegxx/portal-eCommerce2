@@ -1,12 +1,10 @@
 var url = window.location.href;
 var numero = url.match(/\d+/g).pop();
-console.log(numero);
 
 function fetchProduct() {
     fetch(`https://fakestoreapi.com/products/${numero}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         const productDetail = document.getElementById("product-detail");
         let html = `
         <div class="container p-4">

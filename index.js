@@ -43,7 +43,6 @@ const fetchReviedProducts = () => {
   fetch("https://fakestoreapi.com/products")
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         var mostReviewedList = document.getElementById("reviewed-products")
         let html = ''
         const produtcs = data.sort(function(a, b) {
@@ -145,7 +144,6 @@ const pesquisarProdutos = () => {
         var name = product.title.toLowerCase();
         return name.includes(termo)
       })
-      console.log("filtrando produtos")
       showProducts(filteredProducts)
     }).catch(error => {
         console.error("Ocorreu um erro ao obter a lista de produtos:", error);
@@ -158,8 +156,6 @@ const filterCategories = () => {
   var categoryOne = document.getElementById("category-1").value
   var priceFrom = document.getElementById("from-imput").value === "" ? 0 : document.getElementById("from-imput").value
   var priceTo = document.getElementById("to-imput").value === "" ? 10000 : document.getElementById("to-imput").value
-
-  console.log("precos", priceFrom, priceTo)
 
   if(categoryOne !== "-Select Category 1-"){
     fetch(`https://fakestoreapi.com/products/category/${categoryOne}`)
@@ -180,6 +176,5 @@ const filterByPrice  = (products, priceFrom, priceTo) => {
   var filteredProducts = products.filter((product) => {
   return product.price >= priceFrom && product.price <= priceTo;
   })
-    console.log("filtrando pro preço", filteredProducts)
     showProducts(filteredProducts)
 }
